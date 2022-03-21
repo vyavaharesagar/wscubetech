@@ -31,7 +31,10 @@ urlpatterns = [
     path('index-4/', views.index4, name='index-4'),
     path('course/', views.course, name='course'),
     path('team/', views.team, name='team'),
+    path('userform/', views.userform, name='userform'),
+    path('submitform/', views.submitform, name='submitform'),
     # path('course/<int:course_id>', views.courseDetail, name='Course Detail'),
     # path('course/<str:course_str>', views.courseDetailWithStr, name='Course Detail With String'),
     path('course/<course_name>', views.courseDetailWithAnyType, name='course_name'),
+    path('calculator/', views.calculator, name='calculator'),
 ]

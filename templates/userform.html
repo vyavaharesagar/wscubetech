@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- ======= Contact Section ======= -->
+
+<section id="contact" class="contact mt-3">
+    <div class="container ">
+
+      <div class="section-header">
+        <h2>User Form</h2>
+      </div>
+
+    </div>
+
+    
+    <div class="container">
+
+      <div class="row gy-5 gx-lg-5">
+
+        
+
+        <div class="col-lg-12">
+          <form  action="{% url 'submitform' %}" method="post" role="form" >
+            {% csrf_token %}
+            {{ form }}
+            {% comment %} <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="value1" class="form-control" value="{{n1}}" id="value1" placeholder="value1" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="text" class="form-control" name="value2" value="{{n2}}" id="value2" placeholder="value2" required>
+              </div>
+            </div> {% endcomment %}
+            
+            <!-- <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div> -->
+            <!-- <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div> -->
+            <div class="text-center"><button type="submit" >Save</button></div>
+            <!-- <div class="text-center"><button type="submit">Send Message</button></div> -->
+            output
+            <input type="text" value="{{output}}">
+          </form>
+        </div><!-- End Contact Form -->
+
+      </div>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+
+{% endblock %}
