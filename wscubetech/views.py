@@ -2,6 +2,8 @@ from asyncio.windows_events import NULL
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect
 from .forms import UserForm
+from service.models import Service
+from news.models import News
 
 def homepage(request):
     # data ={
@@ -62,8 +64,12 @@ def submitform(request):
     except:
         pass
 def services(request):
+
+    serviceData = Service.objects.all().order_by('service_title')
+
+    data = { 'serviceData' : serviceData}
     # print("Services Page Called")
-    return render(request,"services.html")
+    return render(request,"services.html",data)
 def blog_details(request):
     
     return render(request,"blog_details.html")
@@ -116,3 +122,9 @@ def courseDetailWithAnyType(request, course_name ):
 
 def calculator(request):
     return render(request,'calculator.html')
+
+def newsDetail(request,news_id):
+    newsData = News.objects.all()
+
+    data = { 'newsData': newsData}
+    return render(request,"newsdetails.html",data)

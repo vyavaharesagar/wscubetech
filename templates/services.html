@@ -13,25 +13,25 @@
           </div>
   
           <div class="row gy-5">
-  
-            <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-              <div class="service-item">
-                <div class="img">
-                  <img src="{% static 'assets/img/services-1.jpg' %}" class="img-fluid" alt="">
-                </div>
-                <div class="details position-relative">
-                  <div class="icon">
-                    <i class="bi bi-activity"></i>
+            {% for n in serviceData %}
+              <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="service-item">
+                  <div class="img">
+                    <img src="{% static 'assets/img/services-2.jpg' %}" class="img-fluid" alt="">
                   </div>
-                  <a href="#" class="stretched-link">
-                    <h3>Nesciunt Mete</h3>
-                  </a>
-                  <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.</p>
+                  <div class="details position-relative">
+                    <div class="icon">
+                      <i class="bi bi-activity"></i>
+                    </div>
+                    <a href="#" class="stretched-link">
+                      <h3>{{n.service_title}}</h3>
+                    </a>
+                    <p>{{n.service_desc}}</p>
+                  </div>
                 </div>
-              </div>
-            </div><!-- End Service Item -->
-  
-            <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+              </div><!-- End Service Item -->
+            {% endfor %}
+            {% comment %} <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
               <div class="service-item">
                 <div class="img">
                   <img src="{% static 'assets/img/services-2.jpg' %}" class="img-fluid" alt="">
@@ -117,7 +117,7 @@
                   <a href="#" class="stretched-link"></a>
                 </div>
               </div>
-            </div><!-- End Service Item -->
+            </div><!-- End Service Item --> {% endcomment %}
   
           </div>
   
