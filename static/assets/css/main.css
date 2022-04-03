@@ -2771,3 +2771,10 @@ section {
   background: var(--color-primary);
   text-decoration: none;
 }
+
+marquee{
+  height: 30px;
+  padding-top: 2px;
+  background-color: brown;
+  color:white;
+}

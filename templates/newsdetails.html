@@ -3,10 +3,29 @@
 {% block content %}
 
     <!-- ======= About Section ======= -->
-    <marquee class="my-3">This is news</marquee>
+    {% comment %} <br/>
+    <br/>
+    <br/>
+    <br/>
+    <marquee class="my-3" onmouseover="stop()"  onmouseout="start()">
+    {% for news in newsData %}    
+      <a href="newsdetail/{{news.id}}">  {{ news.news_title }}
+    {% endfor %}
+    </marquee> {% endcomment %}
 
-    <div>News Title</div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
-        <div>Nes Description</div>
+    <div class="text-center fs-2 my-2 font-weight-bold ">{{newsDetail.news_title | safe }}  </div>
 
+        <div class= "text-center mx-5">{{newsDetail.news_desc | safe }} </div>
+        <br/>
+        <br/>
+        <br/><br/>
+        <br/>
+        <br/>
 {% endblock %}                      

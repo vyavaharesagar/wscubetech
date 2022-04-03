@@ -37,5 +37,5 @@ urlpatterns = [
     # path('course/<str:course_str>', views.courseDetailWithStr, name='Course Detail With String'),
     path('course/<course_name>', views.courseDetailWithAnyType, name='course_name'),
     path('calculator/', views.calculator, name='calculator'),
-    path('newsdetail/<news_id>', views.newsDetail, name='newsdetail'),
+    path('newsdetail/<slug>', views.newsDetail, name='newsdetail'),
 ]

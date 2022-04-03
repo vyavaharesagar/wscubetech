@@ -1,15 +1,17 @@
-from asyncio.windows_events import NULL
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect
 from .forms import UserForm
 from service.models import Service
 from news.models import News
+from team.models import Team
+from django.core.paginator import Paginator
 
 def homepage(request):
     # data ={
     #     'title':'Home Page',
     #     'bdata':'Jodhpur',
     #     'clist':['Java', 'Python', 'PHP'],
+
     #     'numbers' : [10,20,30,40,50],
     #     # 'numbers' : [10,20,30,40,50],
     #     'student_details' : [
@@ -18,7 +20,11 @@ def homepage(request):
     #     ]
     # }
     # return render(request,"index.html",data)
-    return render(request,"index.html")
+    newsData = News.objects.all()
+    data = { 'newsData': newsData
+    
+    }
+    return render(request,"index.html", data)
 
 def index2(request):
     return render(request,"index-2.html")
@@ -30,7 +36,12 @@ def index4(request):
     return render(request,"index-4.html")
     
 def team(request):
-    return render(request,"team.html")
+    teamData = Team.objects.all()
+
+    data = {'teamData': teamData}
+    print("Team Page Called")
+
+    return render(request,"team.html",data)
 
 def blog(request):
     return render(request,"blog.html")
@@ -66,8 +77,19 @@ def submitform(request):
 def services(request):
 
     serviceData = Service.objects.all().order_by('service_title')
+    # paginator = Paginator(serviceData,2)
+    # page_number = request.GET.get('page')
+    # serviceDataFinal = paginator.get_page(page_number)
+    if request.method == "GET":
+        # __icontains
+        st = request.GET.get('searchtext')
+        if st!=None:
+            serviceData = Service.objects.filter(service_title__icontains = st)
 
-    data = { 'serviceData' : serviceData}
+    data = { 
+            'serviceData' : serviceData,
+            # 'serviceDataFinal':serviceDataFinal
+            }
     # print("Services Page Called")
     return render(request,"services.html",data)
 def blog_details(request):
@@ -123,8 +145,11 @@ def courseDetailWithAnyType(request, course_name ):
 def calculator(request):
     return render(request,'calculator.html')
 
-def newsDetail(request,news_id):
-    newsData = News.objects.all()
-
-    data = { 'newsData': newsData}
+def newsDetail(request,slug):
+    
+    newsDetail = News.objects.get(news_slug=slug)
+    # print(newsDetail)
+    data = { 
+    'newsDetail':newsDetail
+    }
     return render(request,"newsdetails.html",data)

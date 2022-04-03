@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
+<br/>
+<br/>
+<br/>
+{% comment %} <br/> {% endcomment %}
+<marquee class="my-3" onmouseover="stop()"  onmouseout="start()">
+{% for news in newsData %}    
+  <a href="newsdetail/{{news.news_slug}}">  {{ news.news_title }}</a>
+{% endfor %}
+</marquee>
   <section id="hero-animated" class="hero-animated d-flex align-items-center">
     <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
       <img src="{% static 'assets/img/hero-carousel/hero-carousel-3.svg' %}" class="img-fluid animated">
