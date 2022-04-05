@@ -24,7 +24,7 @@
             </form>
           </div>
           <div class="row gy-3">
-            {% for n in serviceData %}
+            {% for n in serviceDataFinal %}
               <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                 <div class="service-item">
                   <div class="img">
@@ -44,6 +44,17 @@
               {% empty %}
               <div class="text-center fs-3"> No Record Found </div>
               {% endfor %}
+              <nav aria-label="...">
+                <ul class="pagination">
+                  {% if serviceDataFinal.has_previous %}
+                  <li class="page-item"><a class="page-link" href="/services/?page=1">First</a></li>
+                  <li class="page-item"><a class="page-link" href="{{serviceDataFinal.previous_page_number}}">Previous</a></li>
+                  {% endif %}
+                  <li class="page-item" aria-current="page"><span class="page-link">2</span></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="/services/?page={{serviceDataFinal.next_page_number}}">Next</a></li>
+                </ul>
+              </nav>
             {% comment %} <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
               <div class="service-item">
                 <div class="img">
