@@ -76,19 +76,20 @@ def submitform(request):
         pass
 def services(request):
 
-    serviceData = Service.objects.all().order_by('service_title')
-    # paginator = Paginator(serviceData,2)
-    # page_number = request.GET.get('page')
-    # serviceDataFinal = paginator.get_page(page_number)
-    if request.method == "GET":
-        # __icontains
-        st = request.GET.get('searchtext')
-        if st!=None:
-            serviceData = Service.objects.filter(service_title__icontains = st)
+    # serviceData = Service.objects.all().order_by('service_title')
+    serviceData = Service.objects.all()
+    paginator = Paginator(serviceData,2)
+    page_number = request.GET.get('page')
+    serviceDataFinal = paginator.get_page(page_number)
+    # if request.method == "GET":
+    #     __icontains
+    #     st = request.GET.get('searchtext')
+    #     if st!=None:
+    #         serviceData = Service.objects.filter(service_title__icontains = st)
 
     data = { 
             'serviceData' : serviceData,
-            # 'serviceDataFinal':serviceDataFinal
+            'serviceDataFinal':serviceDataFinal
             }
     # print("Services Page Called")
     return render(request,"services.html",data)
