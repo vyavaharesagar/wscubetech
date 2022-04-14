@@ -1,0 +1,4 @@
+pip install vertualenv
+virtualenv <environment_name>
+.\<environment_name>\Scripts\activate.ps1
+pip freeze > requirements.txt

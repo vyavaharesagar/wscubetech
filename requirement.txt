@@ -1,4 +1,0 @@
-django-tinymce
-django
-pillow
-django-autoslug
