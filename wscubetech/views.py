@@ -81,6 +81,7 @@ def services(request):
     paginator = Paginator(serviceData,2)
     page_number = request.GET.get('page')
     serviceDataFinal = paginator.get_page(page_number)
+    totalpage = serviceDataFinal.paginator.num_pages #3
     # if request.method == "GET":
     #     __icontains
     #     st = request.GET.get('searchtext')
@@ -88,8 +89,10 @@ def services(request):
     #         serviceData = Service.objects.filter(service_title__icontains = st)
 
     data = { 
-            'serviceData' : serviceData,
-            'serviceDataFinal':serviceDataFinal
+            # 'serviceData' : serviceData,
+            'lastpage':totalpage,
+            'serviceDataFinal':serviceDataFinal,
+            'totalpagelist': [n+1 for n in range(totalpage)]
             }
     # print("Services Page Called")
     return render(request,"services.html",data)

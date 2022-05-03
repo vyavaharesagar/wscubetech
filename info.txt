@@ -1,0 +1,6 @@
+python -m virtualenv venv
+
+pip freeze > requriements.txt
+
+for powershell:
+to activate cd venv\Scripts\avtivate.ps1
