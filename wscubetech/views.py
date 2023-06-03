@@ -4,8 +4,70 @@ from .forms import UserForm
 from service.models import Service
 from news.models import News
 from team.models import Team
+from leads.models import Lead
 from django.core.paginator import Paginator
+from django.contrib.auth.forms import UserCreationForm
+from .decorators import unauhenticated_user, allowed_users,admin_only
 
+from .forms import CreateUserForm
+from django.contrib import messages
+
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
+
+def paid_customers(request):
+    leadData = Lead.objects.filter(status='Paid')
+    data = { 'leadData': leadData,'classpc':'active' }
+    print(data)
+    return render(request,'paid_customers.html',data)
+
+def follow_up_leads(request):
+    leadData = Lead.objects.all()
+    data = { 'leadData': leadData,'classfollow':'active' }
+    print(data.get('name'))
+    return render(request,'follow_up_leads.html',data)
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
+
+@unauhenticated_user
+def login_page(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request,user)
+            return redirect('home')
+        else:
+            messages.info(request, "Username OR Password is incorrect")
+
+    return render(request, "login.html")
+
+@login_required(login_url='login')
+@admin_only
+def signup(request):
+    form = CreateUserForm()
+
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            group = Group.objects.get(name='agent')
+            user.groups.add(group)
+            messages.success(request, 'Account was created for '+ username)
+            return redirect('login')
+
+    context = {'form':form }
+    return render(request, "signup.html", context)
+
+@login_required(login_url='login')
+@admin_only
 def homepage(request):
     # data ={
     #     'title':'Home Page',
@@ -20,10 +82,9 @@ def homepage(request):
     #     ]
     # }
     # return render(request,"index.html",data)
-    newsData = News.objects.all()
-    data = { 'newsData': newsData
-    
-    }
+    leadData = Lead.objects.all()
+    data = { 'leadData': leadData, 'class':'active' }
+    print(data.get('name'))
     return render(request,"index.html", data)
 
 def index2(request):
@@ -157,3 +218,9 @@ def newsDetail(request,slug):
     'newsDetail':newsDetail
     }
     return render(request,"newsdetails.html",data)
+
+
+@login_required(login_url='login')
+def button(request):
+    return render(request, "follow_up_leads.html")
+

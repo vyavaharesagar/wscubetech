@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'service',
     'tinymce',
     'news',
-    'team'
+    'team',
+    'leads'
 ]
 
 MIDDLEWARE = [
@@ -79,8 +80,11 @@ WSGI_APPLICATION = 'wscubetech.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER' : 'root',
+        'PASSWORD' : '',
+        'PORT' : 3306,
+        'NAME': 'wscubetechcrm',
     }
 }
 

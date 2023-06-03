@@ -37,7 +37,7 @@
 
               <div class="meta-top">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="{% url 'blog-details' %}">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="{% url 'blog-details' %}">{{request.user}}</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="{% url 'blog-details' %}"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="{% url 'blog-details' %}">12 Comments</a></li>
                 </ul>

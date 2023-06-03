@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from wscubetech import views
+from leads import views as lead_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name = "home"),
+    path('home', views.homepage, name = "home"),
     path('blog/', views.blog, name="blog"),
     path('contact-us/', views.contact, name ="contact"),
     path('about-us/', views.about, name='about'),
@@ -38,4 +40,14 @@ urlpatterns = [
     path('course/<course_name>', views.courseDetailWithAnyType, name='course_name'),
     path('calculator/', views.calculator, name='calculator'),
     path('newsdetail/<slug>', views.newsDetail, name='newsdetail'),
+    path('button/', views.button, name='button'),
+    path('login/', views.login_page, name='login'),
+    path('logout/', views.logout_user, name='logout'),
+    path('signup/', views.signup, name='signup'),
+    path('follow_up/', views.follow_up_leads, name='follow_up'),
+    path('lead_registration/', lead_views.lead_registration, name='lead_registration'),
+    path('edit_lead/<str:pk>/', lead_views.update_lead, name='edit_lead'),
+    path('delete_lead/<str:pk>/', lead_views.delete_lead, name='delete_lead'),
+    path('paid_customers/', views.paid_customers, name='paid_customers'),
+    # path('edit_lead/<id>', lead_views.update_lead, name="edit_leads"),
 ]
