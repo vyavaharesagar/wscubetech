@@ -47,3 +47,13 @@ class Lead(models.Model):
         return self.name
 
 
+
+class LeadHistory(models.Model):
+    lead = models.ForeignKey(Lead, on_delete=models.CASCADE)
+    status = models.CharField(max_length=20)
+    disposition = models.CharField(max_length=50,null=True,default="None")
+    modified_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    modified_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.lead} - {self.status}"

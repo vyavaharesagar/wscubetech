@@ -2,45 +2,69 @@
 {% load static %}
 {% block content %}
 
-<form method="POST" action="">
-    {% csrf_token %}
-    <!-- {{form}} -->
-    <div class="col-md-6 mb-3">
-        <label for="name">Full Name</label>
-        {{form.name}}
+
+<br>
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+<div class="col-sm-12 col-xl-10">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Horizontal Form</h6>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Full Name</label>
+                <div class="col-sm-10">
+                    {{form.name}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Mobile Number</label>
+                <div class="col-sm-10">
+                    {{form.mobile_number}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    {{form.email}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Select Diposition</label>
+                <div class="col-sm-10">
+                    {{form.diposition}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Remark</label>
+                <div class="col-sm-10">
+                    {{form.remark}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Status</label>
+                <div class="col-sm-10">
+                    {{form.status}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Agent</label>
+                <div class="col-sm-10">
+                    {{form.agent}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Follow Up Date</label>
+                <div class="col-sm-10">
+                    {{form.follow_up_date}}
+                </div>
+            </div>
+        
+        <input class="btn btn-primary" type="submit">
+        </form>
     </div>
-    <div class="col-md-6 mb-3">
-        <label for="mobile_number">Mobile Number</label>
-        {{form.mobile_number}}
-    </div>
-    <div class="col-md-6 mb-3">
-        <label for="email">Email</label>
-        {{form.email}}
-    </div>
-    
-    <div class="col-md-6 mb-3">
-        <label for="diposition">Select Diposition</label>
-        {{form.diposition}}
-    </div>
-    <div class="col-md-6 mb-3">
-        <label for="remark">Remark</label>
-        {{form.remark}}
-    </div>
-    <div class="col-md-6 mb-3">
-        <label for="status">Status</label>
-        {{form.status}}
-    </div>
-    <div class="col-md-6 mb-3">
-        <label for="status">Agent</label>
-        {{form.agent}}
-    </div>
-    <div class="form-group col-md-6  mb-3"> <!-- Date input -->
-        <label class="control-label" for="follow_up_date">Follow Up Date</label>
-        {{form.follow_up_date}}
-      </div>
-        {% for message in messages %}
-            <p>{{message}}</p>
-        {% endfor %}
-    <input class="btn btn-primary" type="submit">
-</form>
+</div>
 {% endblock %}

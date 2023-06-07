@@ -16,14 +16,18 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 
+@login_required
 def paid_customers(request):
     leadData = Lead.objects.filter(status='Paid')
     data = { 'leadData': leadData,'classpc':'active' }
     print(data)
     return render(request,'paid_customers.html',data)
 
+@login_required
 def follow_up_leads(request):
     leadData = Lead.objects.all()
+    if not request.user.is_superuser:
+        leadData = Lead.objects.filter(agent=request.user)
     data = { 'leadData': leadData,'classfollow':'active' }
     print(data.get('name'))
     return render(request,'follow_up_leads.html',data)
@@ -176,7 +180,7 @@ def userform(request):
     # return render(request,"userform.html",{'output':finalans})
 
     # post method
-    data = {'form':fn}
+    data = {'form':fn }
     try:
         n1 = int(request.POST['value1'])
         n2 = int(request.POST['value2'])

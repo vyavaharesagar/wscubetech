@@ -5,39 +5,52 @@
 <div class="container-fluid pt-4 px-4">
   <div class="bg-light text-center rounded p-4">
       <div class="d-flex align-items-center justify-content-between mb-4">
-          <h6 class="mb-0">Follow Up Leads</h6>
-          <a href="">Show All</a>
+          <!-- <h6 class="mb-0">Leads</h6> -->
+          <!-- <a href="">Show All</a> -->
       </div>
+      {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+          {{message}}
+      </div>
+      {% endfor %}
       <div class="table-responsive">
-          <table id="example" class="table text-start align-middle table-bordered table-hover mb-0">
-              <thead>
-                  <tr class="text-dark">
-                      <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
-                      <th scope="col">Follow Up Date</th>
-                      <th scope="col">Full Name</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Mobile</th>
-                      <th scope="col">Disposition</th>
-                      <th scope="col">Remark</th>
-                      <th scope="col">Status</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  {% for lead in leadData %}
-                  <tr>
-                      <!-- <td><input class="form-check-input" type="checkbox"></td> -->
-                      <td>{{lead.follow_up_date}}</td>
-                      <td>{{lead.name}}</td>
-                      <td>{{lead.email}}</td>
-                      <td>{{lead.mobile_number}}</td>
-                      <td>{{lead.diposition}}</td>
-                      <td>{{lead.remark}}</td>
-                      <td>{{lead.status}}</td>
-                      <!-- <td><a class="btn btn-sm btn-primary" href="">Detail</a></td> -->
-                  </tr>
-                  {% endfor %}
-              </tbody>
-          </table>
+        <table id="example" class="table text-start align-middle table-bordered table-hover mb-0">
+            <thead>
+                <tr class="text-dark">
+                    <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
+                    <th scope="col">History</th>
+                    <th scope="col">Follow Up Date</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Disposition</th>
+                    <th scope="col">Remark</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Agent</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lead in leadData %}
+                <tr>
+                    <!-- <td><input class="form-check-input" type="checkbox"></td> -->
+                    <td><a href="/history/{{lead.id}}"class="btn btn-square btn-dark m-2"><i class="fa fa-history"></i></a></td>
+                    <td>{{lead.follow_up_date}}</td>
+                    <td>{{lead.name}}</td>
+                    <td>{{lead.email}}</td>
+                    <td><a href="tel:{{lead.mobile_number}}">{{lead.mobile_number}}</a></td>
+                    <td>{{lead.diposition}}</td>
+                    <td>{{lead.remark}}</td>
+                    <td>{{lead.status}}</td>
+                    <td>{{lead.agent}}</td>
+                    <td><a href="/edit_lead/{{lead.id}}" class="btn btn-square btn-outline-warning m-2"><i class="fa fa-edit"></i></a></td>
+                    <td><a onclick="return confirm('Are you sure you want to delete this?')" href="/delete_lead/{{lead.id}}"class="btn btn-square btn-outline-danger m-2"><i class="fa fa-trash"></i></a></td>
+                    <!-- <td><a class="btn btn-sm btn-primary" href="">Detail</a></td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
       </div>
   </div>
 </div>

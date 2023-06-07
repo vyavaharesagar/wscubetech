@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- lead/history.html -->
+<h1>Lead History</h1>
+
+<p><strong>Lead Name:</strong> {{ lead.name }}</p>
+
+<div class="col-12">
+  <div class="bg-light rounded h-100 p-4">
+      <h6 class="mb-4">Responsive Table</h6>
+      <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Disposition</th>
+                  <th>Modified By</th>
+                  <th>Modified At</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for entry in history %}
+                <tr>
+                  <td>{{ entry.status }}</td>
+                  <td>{{ entry.disposition }}</td>
+                  <td>{{ entry.modified_by }}</td>
+                  <td>{{ entry.modified_at }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

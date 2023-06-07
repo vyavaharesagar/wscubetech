@@ -30,7 +30,7 @@ def admin_only(view_func):
             group = request.user.groups.all()[0].name
         
         if group == 'agent':
-            return redirect('button')
+            return redirect('follow_up')
         
         if group == 'admin':
             return view_func(request,*args,**kwargs)

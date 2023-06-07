@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'tinymce',
     'news',
     'team',
-    'leads'
+    'leads',
+    'breaks',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR,"static"
 ]
+
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'

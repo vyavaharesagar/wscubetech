@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from wscubetech import views
 from leads import views as lead_views
 
@@ -50,4 +50,7 @@ urlpatterns = [
     path('delete_lead/<str:pk>/', lead_views.delete_lead, name='delete_lead'),
     path('paid_customers/', views.paid_customers, name='paid_customers'),
     # path('edit_lead/<id>', lead_views.update_lead, name="edit_leads"),
+    path("breaks/",include("breaks.urls")),
+    path('history/<int:lead_id>/', lead_views.show_history, name='lead-history'),
+
 ]
