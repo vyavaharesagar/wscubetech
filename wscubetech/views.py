@@ -71,7 +71,6 @@ def signup(request):
     return render(request, "signup.html", context)
 
 @login_required(login_url='login')
-@admin_only
 def homepage(request):
     # data ={
     #     'title':'Home Page',

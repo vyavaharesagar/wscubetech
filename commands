@@ -1,0 +1,481 @@
+ 1  cd /home/akshay/wscubetech/
+    2  ll
+    3  sudo service nginx start
+    4  systemctl nginx start
+    5  nginx
+    6  yum install nginx
+    7  sudo yum install epel-release
+    8  sudo yum install nginx
+    9  sudo systemctl start nginx
+   10  sudo systemctl status nginx
+   11  sudo firewall-cmd --permanent --zone=public --add-service=http
+   12  sudo firewall-cmd --permanent --zone=public --add-service=https
+   13  sudo firewall-cmd --reload
+   14  ip addr
+   15  ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
+   16  sudo systemctl enable nginx
+   17  vi /etc/nginx/sites-available/wscubetech
+   18  sudo vi /etc/nginx/
+   19  cd /etc/nginx/
+   20  ll
+   21  cat conf.d/
+   22  cd conf.d/
+   23  ll
+   24  cd ..
+   25  ll
+   26  sudo mkdir /etc/nginx/sites-available
+   27  sudo mkdir /etc/nginx/sites-enabled
+   28  sudo vi /etc/nginx/nginx.conf
+   29  sudo vi /etc/nginx/sites-available/wscubetech
+   30  cd sites-
+   31  cd sites-available/
+   32  ll
+   33  mv wscubetech wscubetech.conf
+   34  ll
+   35  sudo ln -s /etc/nginx/sites-available/wscubetech.conf /etc/nginx/sites-enabled/wscubetech.conf
+   36  sudo systemctl restart nginx
+   37  journalctl -xe
+   38  ll
+   39  sudo systemctl status nginx
+   40  sudo vi /etc/hosts
+   41  sudo systemctl status nginx
+   42  sudo systemctl restart nginx
+   43  systemctl status nginx.service
+   44  ll
+   45  cd ..
+   46  ll
+   47  rm -rf sites-available/
+   48  rm -rf sites-enabled/
+   49  ll
+   50  vi conf.d/
+   51  ll
+   52  vi nginx.conf
+   53  cd conf.d/
+   54  ll
+   55  sudo vi wscubetech.conf
+   56  sudo systemctl restart nginx
+   57  sudo systemctl status nginx
+   58  cat wscubetech.conf
+   59  sudo nano /etc/systemd/system/gunicorn.service
+   60  ll
+   61  sudo systemctl enable gunicorn
+   62  sudo systemctl start gunicorn
+   63  sudo systemctl restart nginx
+   64  sudo systemctl status nginx
+   65  sudo systemctl status gunicorn
+   66  sudo systemctl start gunicorn
+   67  sudo systemctl status gunicorn
+   68  sudo nano /etc/systemd/system/gunicorn.service
+   69  sudo systemctl daemon-reload
+   70  sudo systemctl restart gunicorn
+   71  sudo systemctl status gunicorn
+   72  ls -l /etc/systemd/system/gunicorn.service
+   73  sudo chown akshay: akshay /etc/systemd/system/gunicorn.service
+   74  sudo chown akshay:akshay /etc/systemd/system/gunicorn.service
+   75  ls -l /etc/systemd/system/gunicorn.service
+   76  sudo systemctl daemon-reload
+   77  sudo systemctl restart gunicorn
+   78  sudo systemctl status gunicorn
+   79  sudo nano /path/to/wscubetech/logs/gunicorn.log
+   80  sudo nano /home/akshay/wscubetech/logs/gunicorn.log
+   81  cd /home
+   82  ll
+   83  cd akshay/
+   84  ll
+   85  cd wscubetech/
+   86  ll
+   87  rm -rf conf/
+   88  ll
+   89  rm -rf mysqlclient-2.1.1.tar.gz
+   90  ll
+   91  source venv/bin/activate
+   92  sudo systemctl daemon-reload
+   93  sudo systemctl restart gunicorn
+   94  sudo systemctl status gunicorn
+   95  id akshay
+   96  ls -l
+   97  ll
+   98  sudo chown -R akshay:akshay /home/akshay/wscubetech
+   99  ll
+  100  sudo systemctl daemon-reload
+  101  sudo systemctl restart gunicorn
+  102  sudo systemctl status gunicorn
+  103  gunicorn --bind unix:/home/akshay/wscubetech/wscubetech.sock wscubetech.wsgi:application
+  104  sudo vi /etc/nginx/conf.d/default.conf
+  105  sudo vi /etc/nginx/conf.d/wscubetech.conf
+  106  systemctl restart nginx
+  107  systemctl status nginx
+  108  systemctl restart gunucorn
+  109  systemctl restart gunicorn
+  110  systemctl status gunicorn
+  111  sudo systemctl enable nginx
+  112  systemctl status gunicorn
+  113  systemctl start gunicorn
+  114  sudo journalctl -u gunicorn
+  115  Jun 25 14:02:35 localhost.localdomain systemd[1]: gunicorn.service: main process exited, code=exited
+  116  Jun 25 14:02:35 localhost.localdomain systemd[1]: Unit gunicorn.service entered failed state.
+  117  Jun 25 14:02:35 localhost.localdomain systemd[1]: gunicorn.service failed.
+  118  Jun 25 14:05:16 localhost.localdomain systemd[1]: Started Gunicorn service for Wscubetech.
+  119  Jun 25 14:05:16 localhost.localdomain systemd[19410]: Failed at step USER spawning /home/akshay/wscu
+  120  Jun 25 14:05:16 localhost.localdomain systemd[1]: gunicorn.service: main process exited, code=exited
+  121  Jun 25 14:05:16 localhost.localdomain systemd[1]: Unit gunicorn.service entered failed state.
+  122  Jun 25 14:05:16 localhost.localdomain systemd[1]: gunicorn.service failed.
+  123  Jun 25 14:08:01 localhost.localdomain systemd[1]: Started Gunicorn service for Wscubetech.
+  124  Jun 25 14:08:01 localhost.localdomain systemd[19500]: Failed at step USER spawning /home/akshay/wscu
+  125  Jun 25 14:08:01 localhost.localdomain systemd[1]: gunicorn.service: main process exited, code=exited
+  126  Jun 25 14:08:01 localhost.localdomain systemd[1]: Unit gunicorn.service entered failed state.
+  127  Jun 25 14:08:01 localhost.localdomain systemd[1]: gunicorn.service failed.
+  128  Jun 25 14:13:50 localhost.localdomain systemd[1]: Started Gunicorn service for Wscubetech.
+  129  Jun 25 14:13:50 localhost.localdomain systemd[1]: gunicorn.service: main process exited, code=exited
+  130  Jun 25 14:13:50 localhost.localdomain systemd[1]: Unit gunicorn.service entered failed state.
+  131  Jun 25 14:13:50 localhost.localdomain systemd[1]: gunicorn.service failed.
+  132  Jun 25 14:14:24 localhost.localdomain systemd[1]: Started Gunicorn service for Wscubetech.
+  133  Jun 25 14:14:24 localhost.localdomain systemd[1]: gunicorn.service: main process exited, code=exited
+  134  Jun 25 14:14:24 localhost.localdomain systemd[1]: Unit gunicorn.service entered failed state.
+  135  ll
+  136  cd ..
+  137  ll
+  138  cd ..
+  139  ll
+  140  cd ..
+  141  ll
+  142  cd /usr
+  143  ll
+  144  cd /var
+  145  ll
+  146  cd www
+  147  ll
+  148  cd html/
+  149  ll
+  150  ll /home/akshay/
+  151  ll
+  152  mv /home/akshay/wscubetech/ /var/www/html/
+  153  ll
+  154  sudo chown -R root:root /var/www/html/wscubetech/
+  155  ll
+  156  cd wscubetech/
+  157  ll
+  158  rm -rf venv/
+  159  ll
+  160  python3 -m venv venv
+  161  source venv/bin/activate
+  162  python3 manage.py runserver
+  163  ll
+  164  cd venv/
+  165  ll
+  166  vi pyvenv.cfg
+  167  python3 --version
+  168  cd ..
+  169  python3 manage.py runserver
+  170  pip install django
+  171  'pip install --upgrade pip
+  172  pip install --upgrade pip
+  173  pip install pip install django-tinymce
+  174  pip install pymysql
+  175  python3 manage.py runserver
+  176  pip install django-autoslug
+  177  python3 manage.py runserver
+  178  pip install pillow
+  179  python3 manage.py runserver
+  180  ll
+  181  python3 manage.py runserver
+  182  python3 manage.py runserver http://192.168.0.222:8000/
+  183  python3 manage.py runserver 192.168.0.222:8000
+  184  ll
+  185  pip install gunicorn
+  186  gunicorn wsgi:application
+  187  sudo nano /etc/systemd/system/gunicorn.service
+  188  sudo nano /etc/nginx/conf.d/wscubetech.conf
+  189  sudo systemctl start gunicorn
+  190  sudo systemctl enable gunicorn
+  191  systemctl daemon-reload
+  192  sudo systemctl start gunicorn
+  193  sudo systemctl enable gunicorn
+  194  sudo systemctl restart nginx
+  195  systemctl status nginx.service
+  196  journalctl -xe
+  197  sudo chown root:root /etc/nginx/conf.d/wscubetech.conf
+  198  sudo systemctl restart nginx
+  199  sudo setenforce 0
+  200  sudo systemctl restart nginx
+  201  sudo nginx -t
+  202  vi /etc/nginx/conf.d/wscubetech.conf
+  203  sudo vi /etc/nginx/conf.d/wscubetech.conf
+  204  sudo systemctl restart nginx
+  205  ll
+  206  systemctl status gunicorn
+  207  systemctl restart gunicorn
+  208  systemctl status gunicorn
+  209  ll /etc/systemd/system/
+  210  sudo chown root:root /etc/systemd/system/gunicorn.service
+  211  ll /etc/systemd/system/
+  212  sudo chmod 644 /etc/systemd/system/gunicorn.service
+  213  ll /etc/systemd/system/
+  214  sudo systemctl daemon-reload
+  215  sudo systemctl restart gunicorn
+  216  sudo journalctl -u gunicorn -xe
+  217  sudo nano /etc/systemd/system/gunicorn.service
+  218  sudo journalctl -u gunicorn -xe
+  219  sudo systemctl daemon-reload
+  220  sudo systemctl restart gunicorn
+  221  sudo journalctl -u gunicorn -xe
+  222  gunicorn --bind 0.0.0.0:8000 wscubetch.wsgi
+  223  python3 manage.py manage.py runserver 0.0.0.0:8000
+  224  python3 manage.py runserver 0.0.0.0:8000
+  225  sudo vim /etc/systemd/system/gunicorn.socket
+  226  deactivate
+  227  sudo vim /etc/systemd/system/gunicorn.service
+  228  sudo systemctl start gunicorn.socket
+  229  sudo systemctl enable gunicorn.socket
+  230  sudo systemctl restart nginx
+  231  sudo status restart nginx
+  232  sudo systemctl status nginx
+  233  sudo systemctl restart gunicorn
+  234  sudo systemctl start gunicorn
+  235  sudo systemctl status gunicorn
+  236  vi /etc/nginx/conf.d/wscubetech.conf
+  237  sudo vi /etc/nginx/conf.d/wscubetech.conf
+  238  sudo systemctl restart nginx
+  239  sudo systemctl status nginx
+  240  sudo systemctl status gunicorn
+  241  sudo systemctl restart gunicorn
+  242  sudo systemctl daemon-reload
+  243  sudo systemctl restart gunicorn
+  244  sudo systemctl status gunicorn
+  245  cd /etc/systemd/system/
+  246  ll
+  247  sudo chmod 644 /etc/systemd/system/gunicorn.service
+  248  sudo chmod 755 /etc/systemd/system/gunicorn.service
+  249  sudo chmod 755 /etc/systemd/system/gunicorn.socket
+  250  ll
+  251  sudo chmod 644 /etc/systemd/system/gunicorn.service
+  252  sudo chmod 644 /etc/systemd/system/gunicorn.socket
+  253  ll
+  254  vi gunicorn.service
+  255  vi gunicorn.socket
+  256  vi gunicorn.service
+  257  sudo vim /etc/systemd/system/gunicorn.service
+  258  sudo systemctl start gunicorn.socket
+  259  sudo systemctl enable gunicorn.socket
+  260  sudo vim /etc/nginx/sites-available/textutils
+  261  cd /etc/nginx
+  262  ll
+  263  mkdir sites-available
+  264  mkdir sites-enabled
+  265  sudo vim /etc/nginx/sites-available/wscubetech
+  266  sudo ln -s /etc/nginx/sites-available/wscubetech /etc/nginx/sites-enabled/
+  267  sudo systemctl restart nginx
+  268  sudo systemctl restart ginicorn
+  269  sudo systemctl restart gunicorn
+  270  sudo systemctl status gunicorn
+  271  ps -ef | grep gunicorn
+  272  sudo journalctl -u gunicorn -xe
+  273  systemctl status nginx
+  274  cd /var/www
+  275  ll
+  276  cd html/
+  277  ll
+  278  cd wscubetech/
+  279  ll
+  280  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  281  wscubetech/
+  282  cd wscubetech/
+  283  ll
+  284  gunicorn --bind 0.0.0.0:8000 wsgi
+  285  cd ..
+  286  ll
+  287  cd venv/bin/activate
+  288  source venv/bin/activate
+  289  gunicorn --bind 0.0.0.0:8000 wsgi
+  290  cd ..
+  291  gunicorn --bind 0.0.0.0:8000 wsgi
+  292  sudo nano /etc/systemd/system/gunicorn.service
+  293  sudo systemctl daemon-reload
+  294  sudo systemctl restart gunicorn
+  295  sudo journalctl -u gunicorn -xe
+  296  sudo nano /etc/systemd/system/gunicorn.service
+  297  sudo systemctl daemon-reload
+  298  sudo systemctl restart gunicorn
+  299  sudo journalctl -u gunicorn -xe
+  300  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  301  sudo systemctl daemon-reload
+  302  sudo systemctl restart gunicorn
+  303  sudo journalctl -u gunicorn -xe
+  304  cd wscubetech/
+  305  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  306  systemctl restart nginx
+  307  systemctl status nginx
+  308  systemctl status gunicorn
+  309  vi /etc/nginx/conf.d/wscubetech.conf
+  310  ll
+  311  systemctl restart gunicorn
+  312  systemctl status gunicorn
+  313  systemctl status nginx
+  314  ll
+  315  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  316  vi /etc/nginx/conf.d/wscubetech.conf
+  317  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  318  cd ..
+  319  cd wscubetech/
+  320  vi settings.py
+  321  gunicorn --bind 0.0.0.0:8000 --static wscubetech.wsgi
+  322  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  323  ll
+  324  cd ..
+  325  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  326  python manage.py collectstatic
+  327  cd wscubetech/
+  328  ll
+  329  vi settings.py
+  330  python manage.py collectstatic
+  331  cd ..
+  332  python manage.py collectstatic
+  333  vi wscubetech/settings.py
+  334  cd ..
+  335  python manage.py collectstatic
+  336  cd wscubetech/
+  337  python manage.py collectstatic
+  338  vi wscubetech/settings.py
+  339  python manage.py collectstatic
+  340  vi wscubetech/settings.py
+  341  python manage.py collectstatic
+  342  vi wscubetech/settings.py
+  343  python manage.py collectstatic
+  344  vi wscubetech/settings.py
+  345  python manage.py collectstatic
+  346  ll
+  347  cd wscubetech/
+  348  ll
+  349  git diff settings.py
+  350  vi wscubetech/settings.py
+  351  vi settings.py
+  352  ll
+  353  python manage.py collectstatic
+  354  cd ..
+  355  python manage.py collectstatic
+  356  vi wscubetech/settings.py
+  357  python manage.py collectstatic
+  358  gunicorn --bind 0.0.0.0:8000 textutils.wsgi
+  359  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  360  ll
+  361  cd static/
+  362  ll
+  363  cd root/
+  364  ll
+  365  cd static/
+  366  ll
+  367  cd root/
+  368  ll
+  369  cd static/
+  370  ll
+  371  pwd
+  372  cd root/
+  373  ll
+  374  cd ..
+  375  ll
+  376  cd ..
+  377  ll
+  378  cd ..
+  379  ll
+  380  cd ..
+  381  ll
+  382  cd static/
+  383  ll
+  384  rm -rf root/
+  385  ll
+  386  cd ..
+  387  ll
+  388  vi wscubetech/settings.py
+  389  python manage.py collectstatic
+  390  ll
+  391  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  392  ll
+  393  vi wscubetech/settings.py
+  394  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  395  gunicorn --bind 0.0.0.0:8000 --static-map /static=/path/to/your/static/files/ wscubetech.wsgi
+  396  gunicorn --bind 0.0.0.0:8000 --static-map /static=/var/www/html/wscubetech/staticroot/  wscubetech.wsgi
+  397  gunicorn --bind 0.0.0.0:8000 --static-map /var/www/html/wscubetech/staticroot/  wscubetech.wsgi
+  398  ginicorn --help
+  399  gunicorn --help
+  400  ll
+  401  vi wscubetech/settings.py
+  402  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  403  vi wscubetech/settings.py
+  404  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  405  ll
+  406  vi wscubetech/settings.py
+  407  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  408  vi wscubetech/settings.py
+  409  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  410  ls -l static/
+  411  gunicorn --bind 0.0.0.0:8000 --static-map /static=/var/www/html/wscubetech/static/ wscubetech.wsgi
+  412  systemctl restart gunicorn
+  413  sudo service gunicorn restart
+  414  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  415  python manage.py runserver 0.0.0.0:8000
+  416  vi wscubetech/settings.py
+  417  python manage.py runserver 0.0.0.0:8000
+  418  vi wscubetech/settings.py
+  419  python manage.py runserver 0.0.0.0:8000
+  420  gunicorn --bind 0.0.0.0:8000 wscubetech.wsgi
+  421  systemctl restart nginx
+  422  systemctl restart gunicorn
+  423  systemctl status gunicorn
+  424  ll
+  425  cd /etc/nginx/
+  426  ll
+  427  cd conf.d/
+  428  ll
+  429  cat wscubetech.conf
+  430  sudo tail -f /var/log/nginx/access.log
+  431  systemctl status nginx
+  432  sudo nano /etc/nginx/nginx.conf
+  433  sudo vi /etc/nginx/nginx.conf
+  434  cd ..
+  435  cp nginx.conf nginx.conf_copy
+  436  ll
+  437  mv nginx.conf nginx.conf_old
+  438  mv nginx.conf_copy nginx.conf
+  439  vi nginx.conf
+  440  > nginx.conf
+  441  vi nginx.conf
+  442  cd conf.d/
+  443  ll
+  444  mv wscubetech.conf wscubetech.conf_old
+  445  vi wscubetech.conf
+  446  sudo nginx -t
+  447  vi wscubetech.conf
+  448  sudo nginx -t
+  449  cd ..
+  450  cd sites-enabled/
+  451  vi wscubetech
+  452  sudo nginx -t
+  453  ll
+  454  cd ..
+  455  ll
+  456  cd conf.d/
+  457  ll
+  458  mv wscubetech.conf_new
+  459  mv wscubetech.conf wscubetech.conf_new
+  460  ll
+  461  mv wscubetech.conf_old wscubetech.conf
+  462  ll
+  463  cd ..
+  464  ll
+  465  mv nginx.conf nginx.conf_new
+  466  mv nginx.conf_old nginx.conf
+  467  ll
+  468  vi nginx.conf
+  469  sudo nginx -t
+  470  systemctl restart nginx
+  471  systemctl restart gunicorn
+  472  tail -f /var/log/nginx/access.log
+  473  sudo firewall-cmd --permanent --add-service=http
+  474  sudo firewall-cmd --reload
+  475  sudo systemctl start firewalld
+  476  sudo systemctl enable firewalld
+  477  sudo systemctl status firewalld
+  478  sudo firewall-cmd --zone=public --add-port=8000/tcp --permanent
+  479  sudo firewall-cmd --reload
+  480  sudo firewall-cmd --zone=public --list-ports
+  481  history

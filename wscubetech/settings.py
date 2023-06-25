@@ -138,3 +138,6 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+CONVOX_API_KEY = 'your_convox_api_key'
+CONVOX_API_URL = 'https://api.convox.com'

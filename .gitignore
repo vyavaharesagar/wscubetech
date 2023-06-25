@@ -1,3 +1,5 @@
 /wscubetech/__pycache__
 wscubetech/__pycache__/views.cpython-310.pyc
 .gitignore
+wscubetech/__pycache__/settings.cpython-310.pyc
+wscubetech/__pycache__/views.cpython-310.pyc

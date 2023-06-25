@@ -27,8 +27,10 @@
                     <th scope="col">Remark</th>
                     <th scope="col">Status</th>
                     <th scope="col">Agent</th>
+                    {% if user.is_superuser %}
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -44,9 +46,11 @@
                     <td>{{lead.remark}}</td>
                     <td>{{lead.status}}</td>
                     <td>{{lead.agent}}</td>
+                    {% if user.is_superuser %}
                     <td><a href="/edit_lead/{{lead.id}}" class="btn btn-square btn-outline-warning m-2"><i class="fa fa-edit"></i></a></td>
                     <td><a onclick="return confirm('Are you sure you want to delete this?')" href="/delete_lead/{{lead.id}}"class="btn btn-square btn-outline-danger m-2"><i class="fa fa-trash"></i></a></td>
                     <!-- <td><a class="btn btn-sm btn-primary" href="">Detail</a></td> -->
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
